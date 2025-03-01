@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 
-function Register({setIsLogin,setisModalOpen}) {
+function Register({setIsLogin,setIsModalOpen}) {
     const moveToLogin = () =>{
         setIsLogin(true)
-        setisModalOpen(false)
+        setIsModalOpen(false)
       
       }
   return (
@@ -35,7 +35,7 @@ function Register({setIsLogin,setisModalOpen}) {
 }
 
 Register.propTypes = {
-    setIsLogin : PropTypes.boolean.isRequired,
-    setisModalOpen : PropTypes.boolean.isRequired
+    setIsLogin : PropTypes.func.isRequired,
+    setIsModalOpen : PropTypes.func.isRequired
 }
 export default Register

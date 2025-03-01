@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
-function Login({setIsLogin,setisModalOpen}) {
+function Login({setIsLogin,setIsModalOpen}) {
   const moveToSign = () =>{
     setIsLogin(false)
-    setisModalOpen(true)
+    setIsModalOpen(true)
   
   }
   return (
@@ -37,8 +37,8 @@ function Login({setIsLogin,setisModalOpen}) {
 }
 
 Login.propTypes = {
-    setIsLogin : PropTypes.boolean.isRequired,
-    setisModalOpen : PropTypes.boolean.isRequired
+    setIsLogin : PropTypes.func.isRequired,
+    setIsModalOpen : PropTypes.func.isRequired
 }
 
 export default Login

@@ -7,11 +7,13 @@ import { setSearchTerm } from "../redux/productSlice"
 import Modal from './Modal'
 import Login from "./Login"
 import Register from "./Register"
+import logo from '../assets/logo.jpg'
 function Navbar() {
-  const [isModalOpen, setisModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLogin, setIsLogin] = useState(true)
-  const [search,setSearch] = useState()
+  const [search,setSearch] = useState("")
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleSearch = (e) => {
     e.preventDefault()
@@ -20,7 +22,6 @@ function Navbar() {
   }
 
   const products = useSelector(state=>state.cart.products)
-  const navigate = useNavigate()
   const moveToCart = () =>{
     navigate('/cart')
   }
@@ -30,7 +31,9 @@ function Navbar() {
     <nav className="bg-white shadow-md sticky top-0 z-10">
       <div className="container mx-auto px-4 md:px-16 lg:px-24 py-4 flex justify-between items-center">
         <div className="text-lg font-bold">
-          <Link to="/">e-Shop</Link>
+          <Link to="/">
+            <img src={logo} className="h-24" alt="" />
+          </Link>
         </div>
         <div className="relative flex-1 mx-4">
           <form onSubmit={handleSearch}>
@@ -43,7 +46,7 @@ function Navbar() {
             <FaShoppingCart className="text-lg" onClick={moveToCart}/>
               <span className="grid place-content-center text-white absolute bottom-3 left-3 bg-red-500 text-sm h-5 w-5 rounded-full">{products.length > 0 ? products.length : 0}</span>
           </Link>
-          <button className="hidden md:block" onClick={()=>setisModalOpen(true)}>Login | Register</button>
+          <button className="hidden md:block" onClick={()=>setIsModalOpen(true)}>Login | Register</button>
           <button className="block md:hidden">
             <FaUser/>
           </button>
@@ -70,8 +73,8 @@ function Navbar() {
         </NavLink>
 
       </div>
-      <Modal isModalOpen={isModalOpen} setIsModalOpen={setisModalOpen}>
-        {isLogin ? <Login setIsLogin={setIsLogin} setIsModalOpen={setisModalOpen}/>:<Register setIsLogin={setIsLogin} setIsModalOpen={setisModalOpen}/>}
+      <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+        {isLogin ? <Login setIsLogin={setIsLogin} setIsModalOpen={setIsModalOpen}/>:<Register setIsLogin={setIsLogin} setIsModalOpen={setIsModalOpen}/>}
       </Modal>
     </nav>
   )
